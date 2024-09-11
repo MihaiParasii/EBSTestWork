@@ -1,0 +1,147 @@
+Object Oriented Programming (OOP) Principles
+
+1.  Polymorphism is:
+        a) the ability to implement multiple interfaces in one class;
+            -> b) a way in which a variable, method or an object can take on multiple forms;
+        c) polymorphism is a biological concept and is not related to OOP;
+        d) is the method hide class members using private access modifier;
+
+2.  The mechanism that allows to acquire properties and methods of another class is:
+        a) inheritance;
+            -> b) interface implementation;
+        c) member sharing;
+
+3.  The practice of hiding implementation details or the inner state of an object is:
+        a) abstract class;
+        b) caching mechanism;
+        c) generic type;
+            -> d) encapsulation;
+        
+    
+    
+        
+C# Related Questions and Exercises
+
+1.  Constructors are used to:
+        a) build a program;
+        b) construct a class;
+            -> c) initialize an object;
+        d) declare a variable;
+
+2.  Add the correct data type for the following variables (replace dots with appropriate data type):
+        • int age = 21;
+        • bool isNicePerson = true;
+        • char splitSymbol = ‘-’;
+        • double unitPrice = 3.44; 
+        • string congratsMessage = “Happy birthday, bro!”;
+    
+3.  Use string interpolation method to concatenate 2 strings:
+        string streetName = “123 Vasile Lupu”;
+        string city = “Chisinau”;
+        string fullAddress = $"{streetName} {city]" // your response
+
+4.  Given the variable int i = 1, write a code block that will print i as long i is less or equals 10;
+        //In Program.cs method Ex4()
+
+5.  Stop loop if i=7;
+        for(int i = 1; i<=10; i++)
+        {
+            if(i == 7)
+            {
+                break;
+            }
+        }
+    
+6.  This task requires that you change this code to make it more extensible.
+        // In code
+    
+7.  What’s wrong in this code, please explain:
+        public |-> sealed <-| class Animal
+        {
+            public virtual void Presentation()
+            {
+                Console.WriteLine("I am something cute and unidentified");
+            }
+        }
+
+        public class Cat : Animal
+        {
+            public override void Presentation()
+            {
+                Console.WriteLine("I am a cat!");
+            }
+        }
+        
+        // The sealed keyword means that this class can't be inherited or overridden.
+
+8.  Complete the code to output an error message if an error occurs.
+        int a = 4;
+        int b = 0;
+        int result = a / b;
+        
+        // In Program.cs method Ex8()
+
+
+
+
+SQL Related Questions and Exercises
+
+1.  Select all the different values from the Email column in the Customers table.
+        SELECT DISTINCT(Email)
+        FROM Customers;
+
+2.  Set the value of Discount column, in table Products, to 0.2, but only the ones where ProductCategoryId column has the value 11.
+        UPDATE Products
+        SET Discount = 0.2
+        WHERE ProductCategoryId = 11;
+
+3.  Select all customers from table Customer where the FirstName starts with a, b or c.
+        SELECT * FROM Customer
+        WHERE FirstName LIKE "a%" OR FirstName LIKE "b%" OR FirstName LIKE "c";
+
+4.  List Customers and their Orders. The relation between table is by CustomerId.
+        SELECT c.Name, c.BirthDate, o.Price, ...
+        FROM Customer as c
+        INNER JOIN Orders as o
+        ON c.CustomerId = o.CustomerId;
+
+5.  List number of employees by gender. Table name is Employees, column Gender
+        SELECT Gender, COUNT(Gender)
+        FROM Employees
+        GROUP BY Gender;
+
+6.  List customers who made more than 5 orders. Table Orders, column CustomerId.
+        SELECT CustomerId
+        FROM Orders
+        HAVING COUNT(CustomerId) > 5;
+
+7.  This query displays orders made in April, 2018. On column order_created a non
+    clustered index is created. This query works fine but, because we use SQL functions
+    that manipulate the data (YEAR and MONTH), the index is not used. Rewrite this query
+    so we are able to use index.
+        -- the query
+            select * from sales.orders where YEAR(order_date) = 2018 and MONTH(order_date) = 4
+        -- your response
+        
+        //Only for this question I searched on StackOverFlow to find answer, but I write my answer, 
+        //not sure that this answer is correct or will work))
+        
+        SELECT * 
+        FROM sales.orders
+        WHERE order_date LIKE "2018-04-%";
+        
+        
+8.  Select all products from table Products where the UnitPrice value is greater 100 and
+    less 200.
+        SELECT * 
+        FROM Products
+        WHERE UnitPrice BETWEEN (100 AND 200); 
+ 
+9.  Select all employees from table Employees that live in Chisinau or Durlesti (column name is City).
+        SELECT *
+        FROM Employees
+        WHERE City LIKE "Chisinau" OR City LIKE "Durlesti";
+
+10. Write a SQL statement that adds a column named Notes of type nvarchar(1024) to the table Shipping.
+        ALTER TABLE Shipping
+        ADD COLUMN Notes nvarchar(1024);
